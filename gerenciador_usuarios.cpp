@@ -11,7 +11,7 @@ bool GerenciadorUsuarios::registrarUsuario(std::string nome, std::string senha, 
     }
 
     // Adiciona o usuário no final do vetor
-    usuarios.push_back(nome, senha, numeroConta);
+    usuarios.emplace_back(nome, senha, numeroConta);
     return true;
 }   
 
@@ -20,7 +20,7 @@ Usuario* GerenciadorUsuarios::autenticarUsuario(std::string nome, std::string se
                 [&nome](const Usuario& u) {return u.getNome() == nome; });
     
     if( user != usuarios.end() && user->verificarSenha(senha)){
-        return &(*it); // Retorna um ponteiro para o usuário autenticado
+        return &(*user); // Retorna um ponteiro para o usuário autenticado
     }
     return nullptr;    // Autenticação falhou, retorna ponteiro null
 }
