@@ -20,3 +20,15 @@ bool ContaBancaria::sacar(double valor){
 void ContaBancaria::exibirSaldo() const {
     std::cout << "Titular: " << titular << " | Conta: " << numero << " | Saldo: " << saldo << "\n";
 }
+
+int ContaBancaria::getNumero() const {
+    return numero;
+}
+
+std::string ContaBancaria::getTitular() const {
+    return titular;
+}
+
+double ContaBancaria::getSaldo() const {
+    return saldo;
+}

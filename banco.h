@@ -7,11 +7,13 @@
 #include "contaBancaria.h"
 
 class Banco {
-    std::vector<std::shared_ptr<ContaBancaria>> contas;
+
+    private:
+        std::vector<std::unique_ptr<ContaBancaria>> contas;
 
     public:
-        void adicionarConta(std::shared_ptr<ContaBancaria> conta);
-        void listarContas();
+        ContaBancaria* criarConta(std::string titular);
+        ContaBancaria* buscarConta(int numeroConta);
 };
 
 #endif

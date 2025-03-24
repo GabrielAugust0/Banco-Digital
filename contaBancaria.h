@@ -19,6 +19,9 @@ class ContaBancaria{
         virtual bool sacar(double valor);
         virtual void exibirSaldo() const;
         virtual ~ContaBancaria() = default;
+        virtual int getNumero() const;
+        virtual std::string getTitular() const;
+        virtual double getSaldo() const;
 };
 
 #endif

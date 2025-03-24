@@ -1,6 +1,8 @@
 #include "gerenciador_usuarios.h"
 #include <algorithm>
 
+GerenciadorUsuarios::GerenciadorUsuarios(Banco& banco) : banco(banco) {}
+
 bool GerenciadorUsuarios::registrarUsuario(std::string nome, std::string senha, int numeroConta){
     // Verifica se o usuário já existe
     auto user = std::find_if(usuarios.begin(), usuarios.end(),
@@ -10,8 +12,9 @@ bool GerenciadorUsuarios::registrarUsuario(std::string nome, std::string senha, 
         return false; // Usuário já existe
     }
 
-    // Adiciona o usuário no final do vetor
-    usuarios.emplace_back(nome, senha, numeroConta);
+    // Cria uma conta no banco e adiciona o usuário no final do vetor
+    ContaBancaria* novaConta = banco.criarConta(nome);
+    usuarios.emplace_back(nome, senha, novaConta);
     return true;
 }   
 

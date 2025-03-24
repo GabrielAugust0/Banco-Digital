@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include "contaBancaria.h"
 
 class Usuario{
 
@@ -7,15 +8,15 @@ class Usuario{
         // Métodos privados, só devem ser alterados nesta classe (usar gets e sets)
         std::string nome;
         std::string senha;
-        int numeroConta;    
-    
+        ContaBancaria* conta; // Aloca dinamicamente a conta  
+        
     public:
-        Usuario(std::string nome, std::string senha, int numeroConta);
+        Usuario(std::string nome, std::string senha, ContaBancaria* conta);
 
         // Getters
         std::string getNome() const;
         std::string getSenha() const;
-        int getNumeroConta() const;
+        ContaBancaria* getConta() const;
 
         // Verificação de senha
         bool verificarSenha(std::string senhaDigitada) const;
